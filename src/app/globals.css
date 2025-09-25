@@ -1,26 +1,61 @@
-@import "tailwindcss";
+/* Tailwind (ok dejarlo aunque uses estilos inline) */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Reset básico */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; width: 100%; overflow-x: hidden; }
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: #0a0a0a;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Enlaces del header (reusables) */
+.link {
+  color: #e5e7eb;                 /* zinc-200 */
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.link:hover { color: #fff; text-decoration: underline; }
+
+/* Utilidad full-bleed por si la necesitás en otras secciones */
+.full-bleed {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+}
+
+/* Botones por si preferís clases en vez de inline */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background .2s ease, border-color .2s ease, color .2s ease;
+}
+.btn-primary { background: #2563eb; color: #fff; }
+.btn-primary:hover { background: #1e40af; }
+.btn-outline { border: 1px solid rgba(255,255,255,.9); color: #fff; background: transparent; }
+.btn-outline:hover { border-color: #fff; color: #fff; }
+
+/* Taps cómodos en móvil */
+@media (max-width: 768px) {
+  a, button { min-height: 44px; }
+  .btn { width: 100%; }
+}
+
+/* Evita zoom en inputs iOS (si luego agregamos formularios) */
+@media screen and (max-width: 768px) {
+  input, select, textarea { font-size: 16px; }
 }
