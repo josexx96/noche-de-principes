@@ -1,8 +1,10 @@
 import "./globals.css";
+import Link from "next/link";
 
 export const metadata = {
   title: "Noche de los Príncipes",
-  description: "Perfumes originales · Compra por WhatsApp y pago por SINPE Móvil.",
+  description:
+    "Perfumes originales · Compra por WhatsApp y pago por SINPE Móvil.",
 };
 
 export default function RootLayout({ children }) {
@@ -36,16 +38,35 @@ export default function RootLayout({ children }) {
             backdropFilter: "blur(6px)",
           }}
         >
-          <a href="/" style={{ display: "flex", alignItems: "center", gap: "8px", fontWeight: "bold", color: "#fff", textDecoration: "none" }}>
+          <Link
+            href="/"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              fontWeight: "bold",
+              color: "#fff",
+              textDecoration: "none",
+            }}
+            aria-label="Ir al inicio"
+          >
             {/* Ícono de casa */}
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="22" height="22">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+            >
               <path d="M12 3l9 8h-3v9h-4v-6H10v6H6v-9H3z" />
             </svg>
             Home
-          </a>
+          </Link>
 
           <nav style={{ display: "flex", gap: "0.9rem", alignItems: "center" }}>
-            <a className="link" href="/catalogo">Catálogo</a>
+            <Link className="link" href="/catalogo">
+              Catálogo
+            </Link>
             <a
               className="link"
               href={`https://wa.me/${PHONE}`}
