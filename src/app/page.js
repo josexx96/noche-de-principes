@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export default function Home() {
   const PHONE = process.env.NEXT_PUBLIC_SHOP_PHONE || "";
 
@@ -59,31 +61,29 @@ export default function Home() {
           maxWidth: "800px",
         }}
       >
-        {/* Logo */}
+        {/* Logo (optimizado con next/image) */}
         <div
           style={{
             marginInline: "auto",
-            width: "500px",
-            height: "500px",
+            width: "clamp(500px, 28vw, 500px)",
+            height: "clamp(500px, 28vw, 500px)",
             borderRadius: "9999px",
             padding: "12px",
             background: "rgba(0,0,0,0.4)",
             border: "1px solid rgba(255,255,255,0.2)",
             backdropFilter: "blur(6px)",
             marginBottom: "1.5rem",
-            display: "grid",
-            placeItems: "center",
+            position: "relative",
+            overflow: "hidden",
           }}
         >
-          <img
+          <Image
             src="/imagen2.png"
             alt="Noche de Príncipes - Logo"
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              borderRadius: "9999px",
-            }}
+            fill
+            sizes="(max-width: 640px) 200px, (max-width: 1024px) 320px, 500px"
+            style={{ objectFit: "cover", borderRadius: "9999px" }}
+            priority
           />
         </div>
 
@@ -95,8 +95,8 @@ export default function Home() {
             lineHeight: 1.1,
             marginBottom: "16px",
           }}
-        >
-        </h1>
+        ></h1>
+
         <p
           style={{
             fontSize: "clamp(14px, 2.2vw, 20px)",
@@ -135,14 +135,14 @@ export default function Home() {
               boxShadow: "0 4px 12px rgba(255, 255, 255, 1)",
               transition: "all 0.3s ease",
             }}
-            onMouseEnter={(e) =>
-            (e.currentTarget.style.background =
-              "linear-gradient(90deg, #ffc800ff, #000000ff)")
-            }
-            onMouseLeave={(e) =>
-            (e.currentTarget.style.background =
-              "linear-gradient(90deg, #000000ff, #000000ff)")
-            }
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background =
+                "linear-gradient(90deg, #ffc800ff, #000000ff)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background =
+                "linear-gradient(90deg, #000000ff, #000000ff)";
+            }}
           >
             Catálogo
           </a>
@@ -176,15 +176,13 @@ export default function Home() {
       </div>
 
       {/* Animación flotante */}
-      <style>
-        {`
-          @keyframes floatText {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-            100% { transform: translateY(0); }
-          }
-        `}
-      </style>
+      <style>{`
+        @keyframes floatText {
+          0% { transform: translateY(0); }
+          50% { transform: translateY(-6px); }
+          100% { transform: translateY(0); }
+        }
+      `}</style>
     </div>
   );
 }
