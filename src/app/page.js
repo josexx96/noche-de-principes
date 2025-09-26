@@ -65,11 +65,11 @@ export default function Home() {
         <div
           style={{
             marginInline: "auto",
-            width: "clamp(500px, 28vw, 500px)",
-            height: "clamp(500px, 28vw, 500px)",
+            width: "clamp(120px, 42vw, 240px)",   // <— responsivo
+            height: "clamp(120px, 42vw, 240px)",  // <— responsivo
             borderRadius: "9999px",
-            padding: "12px",
-            background: "rgba(0,0,0,0.4)",
+            padding: "10px",
+            background: "rgba(0,0,0,0.35)",
             border: "1px solid rgba(255,255,255,0.2)",
             backdropFilter: "blur(6px)",
             marginBottom: "1.5rem",
@@ -81,7 +81,8 @@ export default function Home() {
             src="/imagen2.png"
             alt="Noche de Príncipes - Logo"
             fill
-            sizes="(max-width: 640px) 200px, (max-width: 1024px) 320px, 500px"
+            // móvil ≈140px, tablet ≈40vw, desktop ≈240px
+            sizes="(max-width: 480px) 140px, (max-width: 1024px) 40vw, 240px"
             style={{ objectFit: "cover", borderRadius: "9999px" }}
             priority
           />
@@ -121,7 +122,6 @@ export default function Home() {
             flexWrap: "wrap",
           }}
         >
-          {/* Catálogo */}
           <a
             href="/catalogo"
             style={{
@@ -147,7 +147,6 @@ export default function Home() {
             Catálogo
           </a>
 
-          {/* WhatsApp */}
           <a
             href={`https://wa.me/${PHONE}`}
             target="_blank"
@@ -186,4 +185,5 @@ export default function Home() {
     </div>
   );
 }
+
 
