@@ -1,5 +1,5 @@
-import { products } from "@/data/products";
-import ProductCard from "@/components/ProductCard";
+import { products } from "../../data/products";
+import ProductCard from "../../components/ProductCard";
 
 export const metadata = { title: "Catálogo" };
 
